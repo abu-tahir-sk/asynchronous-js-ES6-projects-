@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
+      <title>Peddy & Home</title>
+      <link rel="logo icon" type="image/png" href="images/logo.webp">
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
+<body class="inter">
+      <header>
+            <!-- navbar -->
+            <nav class="nav-bar w-11/12 mx-auto py-2 border-b">
+                 <div class="navbar">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
+      </div>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+       <button class="btn-sm">Home</button>
+       <button class="btn-sm">Shop</button>
+       <button class="btn-sm">Contact</button>
+      </ul>
+    </div>
+   <div class="flex justify-center items-center gap-3">
+      <img src="images/logo.webp" class="w-7 h-6" alt="image/logo">
+      <h1 class="text-3xl font-bold">Peddy</h1>
+   </div>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1 gap-3">
+      <button class="btn">Home</button>
+       <button class="btn">Shop</button>
+       <button class="btn">Contact</button>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <button class="btn rounded-full"><i class="fa-regular fa-user"></i></button>
+  </div>
+</div>
+            </nav>
+            <!-- navbar end -->
+      </header>
       
 </body>
 </html>
