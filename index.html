@@ -4,15 +4,16 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Peddy & Home</title>
+      <link rel="stylesheet" href="css/style.css">
       <link rel="logo icon" type="image/png" href="images/logo.webp">
       <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.min.css" rel="stylesheet" type="text/css" />
       <script src="https://cdn.tailwindcss.com"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="inter">
-      <header>
+      <header class="w-11/12 mx-auto py-2 border-b">
             <!-- navbar -->
-            <nav class="nav-bar w-11/12 mx-auto py-2 border-b">
+            <nav class="nav-bar">
                  <div class="navbar">
   <div class="navbar-start">
     <div class="dropdown">
@@ -56,7 +57,46 @@
 </div>
             </nav>
             <!-- navbar end -->
+
+            <!-- banner section -->
+             <div class="items-center py-4 hero">
+              <div class="hero-content text-center">
+    <div class="w-8/12">
+              <h4 class="text-center text-xl font-bold  font-mono">Bringing Families Together ❤️‍🔥</h4>
+              <h2 class="text-center text-6xl font-extrabold py-6">Your Path to Adoption Starts Here</h2>
+              <p class="text-center text-gray-400 py-4">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+              <button class="btn bg-[#0E7A81] text-white">View More</button>
+              <div class="items-center py-6">
+              <img class="" src="images/pet.webp" alt="">
+             </div>
+              </div>
+              </div>
+             </div>
+             
       </header>
-      
+      <main class="w-full md:w-11/12 mx-auto py-2 border-b">
+        <!-- Adopt  Your  Best Friend -->
+         <div class="w-8/12 mx-auto py-8">
+          <h2 class="text-center font-extrabold text-6xl py-4">Adopt  Your  Best Friend</h2>
+          <p class="text-center text-gray-400 py-3">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+         </div>
+         <!-- button section -->
+          <nav id="category-es" class="flex justify-center gap-6 md:gap-10 lg:gap-24 py-10"></nav>
+          <div>
+            <nav class="flex justify-between items-center py-4">
+            <h2 class="font-bold text-2xl">Best Deal For you</h2>
+            <button class="btn bg-[#0E7A81] btn-xs sm:btn-sm md:btn-md lg:btn-lg text-white">Sort by Price</button>
+          </nav>
+          </div>
+          <section  class="grid grid-cols-1 md:grid-cols-3  lg:grid-cols-4 gap-0 md:gap-4 py-6">
+           <div class="order-2 md:order-1 grid col-span-1 md:col-span-2 lg:col-span-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 md:gap-4" id="pets-container">
+             
+           </div>
+            <div class="order-1 md:order-2 border rounded-xl">
+              
+            </div>
+          </section>
+      </main>
+      <script src="js/peddy.js"></script>
 </body>
 </html>

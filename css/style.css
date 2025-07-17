@@ -3,3 +3,11 @@
 .inter{
   font-family: 'Inter', sans-serif;
 }
+
+.rounded{
+  border-radius: 7px;
+}
+.borders{
+  border: 1px rgb(98, 32, 32);
+  padding: 16px;
+}
