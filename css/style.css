@@ -4,10 +4,11 @@
   font-family: 'Inter', sans-serif;
 }
 
-.rounded{
-  border-radius: 7px;
-}
-.borders{
-  border: 1px rgb(98, 32, 32);
-  padding: 16px;
+
+.active {
+  color: #0E7A81;
+  background-color: rgba(14, 122, 129, 0.1);
+  border-radius: 50px;
+  border: solid 1px;
+ 
 }
