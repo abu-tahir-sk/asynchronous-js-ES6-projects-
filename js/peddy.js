@@ -42,7 +42,7 @@ const displayPets2 = (pets) => {
  console.log(pet);
            
             const card = document.createElement("div");
-            card.classList = "border-0 md:border p-2 rounded"
+            card.classList = "border-0 md:border p-2 rounded shadow"
             card.innerHTML = `
              <figure>
     <img id="dddd" class="rounded w-full"
@@ -62,9 +62,11 @@ const displayPets2 = (pets) => {
     <p class="text-gray-400"><i class="fa-solid fa-dollar-sign"></i> price: ${pet.price}</p>` : `<p class="text-gray-400"><i class="fa-solid fa-dollar-sign"></i> price: Free</p>`}
     </div>
     <div class="flex justify-center py-2 gap-3">
-      <button class="btn btn-sm" ><i class="fa-regular fa-thumbs-up"></i></button>
-      <button class="btn btn-sm text-[#0E7A81]">Adopt</button>
-      <button class="btn btn-sm text-[#0E7A81] font-bold" onclick="detailsBtn()">Details</button>
+      <button onclick="loadLike('${pet.petId}')" class="btn btn-sm" ><i class="fa-regular fa-thumbs-up"></i></button>
+
+      <button class="btn btn-sm text-[#0E7A81] adopt-btn">Adopt</button>
+
+      <button class="btn btn-sm text-[#0E7A81] font-bold" onclick="loadDetails('${pet.petId}')">Details</button>
     </div>
   </div>
             `;
@@ -73,6 +75,63 @@ const displayPets2 = (pets) => {
              
 });
 
+};
+
+const loadLike = async(petLike) => {
+      console.log(petLike);
+      const url =`https://openapi.programming-hero.com/api/peddy/pet/${petLike}`;
+      const res = await fetch(url);
+     const data = await res.json();
+     displayLike(data.petData);
+};
+const displayLike = (petData) =>{
+      const likeContainer = document.getElementById('like-btn')
+
+     const img = document.createElement('img');
+      img.src = petData.image;
+      img.alt = petData.pet_name || 'Pet';
+      img.className = 'rounded shadow w-full';
+
+       likeContainer.appendChild(img);
+
+  if(window.innerWidth <= 768){
+      likeContainer.classList.add("hidden")
+  }else{
+       likeContainer.classList.remove("hidden")
+  }
+  
+ 
+ 
+} 
+const loadDetails = async(petId) => {
+      console.log(petId);
+     const url =`https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
+     const res = await fetch(url);
+     const data = await res.json();
+     displayDetails(data.petData);
+}
+
+const displayDetails = (petData) => {
+      const modalContainer = document.getElementById('modal-container');
+
+      modalContainer.innerHTML = `
+      <img class="w-full" src=${petData.image} />
+       <h2 class="card-title py-1">
+      ${petData.pet_name}
+    </h2>
+    <p class="text-gray-400"><i class="fa-solid fa-layer-group"></i> Breed: ${petData.breed}</p>
+    <p class="text-gray-400"><i class="fa-solid fa-cake-candles"></i> Birth: ${petData.date_of_birth}</p>
+    <p class="text-gray-400"><i class="fa-solid fa-venus"></i> Gender: ${petData.gender}</p>
+    <p class="text-gray-400"><i class="fa-solid fa-venus"></i> Gender: ${petData.vaccinated_status}</p>
+    <p class="text-gray-400"><i class="fa-solid fa-dollar-sign"></i> price: ${petData.price}</p>
+    <h2 class="card-title py-1">
+      Details Information
+    </h2>
+    <p class="text-gray-400"><i class="fa-solid fa-dollar-sign"></i> price: ${petData.pet_details}</p>
+
+      `; 
+
+      document.getElementById('detailsModal').showModal();
 };
 
 const removeActiveClass = () => {
@@ -124,6 +183,23 @@ const displayCategories = (categories) => {
 
 
 
+
+
+// const loadAdopt = () => {
+//       document.getElementById('adopt-btn')
+//      let time = 3000;
+//      const countdown = setInterval(() => {
+//       const seconds = time % 60;
+
+//       document.getElementById('seconds').innerHTML = `
+      
+//       `
+//      },3000)
+//      if(time <= 0){
+//       clearInterval(countdown);
+//       document.getElementById("countdown").innerHTML = '';
+//      }
+// };
 
 
 loadCategories();

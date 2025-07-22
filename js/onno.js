@@ -52,10 +52,33 @@
       
 // }
 
-// const loadLike = () => {
-//       const likeBtn = document.getElementById('like-btn');
-
-
-// }
+// 
 
 // loadVideos();
+
+
+const modal = document.getElementById("adoptCountBtn");
+const countDown  = document.getElementById("seconds");
+
+document.addEventListener("click", function (e) {
+    if(e.target.classList.contains("adopt-btn")) {
+       let timeLeft = 3;
+
+       modal.showModal();
+      countDown.textContent = timeLeft;
+
+      const interval = setInterval(() =>{
+            timeLeft--;
+            countDown.textContent = timeLeft;
+
+            if(timeLeft === 0){
+                  clearInterval(interval);
+                  modal.close();
+            }
+      },1000)
+    }
+});
+
+const shortBtnPrice = () => {
+      console.log('dfjfidrjiojtiourt')
+}
