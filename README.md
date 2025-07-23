@@ -13,5 +13,5 @@
  1. Arrow function used ES6.
 ```` const loadCategories = () => {
 
-     };
+     }; ````
  2. 
