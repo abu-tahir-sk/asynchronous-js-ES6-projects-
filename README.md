@@ -1,3 +1,3 @@
-# Peddy 
+# - Peddy 
 
- A project animal 
+ A project animals.learn ES6 JavaScript.
