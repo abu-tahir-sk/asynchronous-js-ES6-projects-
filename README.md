@@ -11,7 +11,7 @@
  5. Clicking the Like button in this project will arrange the card images in a specific grid format.
  * ## ES6 Features used
  1. Arrow function used ES6.
-     Bash const loadCategories = () => {
+```` const loadCategories = () => {
 
      };
  2. 
