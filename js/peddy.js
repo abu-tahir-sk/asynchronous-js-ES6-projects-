@@ -16,10 +16,12 @@ const loadVideos2 = () => {
 }
 
 const displayPets2 = (pets) => {
-  
+     
       const petsContainer = document.getElementById('pets-container');
+     
        petsContainer.innerHTML = '';
-
+       
+  
        if(pets.length == 0){
             petsContainer.classList.remove("grid")
             petsContainer.innerHTML = `
@@ -62,27 +64,37 @@ const displayPets2 = (pets) => {
     <p class="text-gray-400"><i class="fa-solid fa-dollar-sign"></i> price: ${pet.price}</p>` : `<p class="text-gray-400"><i class="fa-solid fa-dollar-sign"></i> price: Free</p>`}
     </div>
     <div class="flex justify-center py-2 gap-3">
-      <button onclick="loadLike('${pet.petId}')" class="btn btn-sm" ><i class="fa-regular fa-thumbs-up"></i></button>
+      <button id="btn-${pet.petId}" onclick="loadLike('${pet.petId}')" class="btn btn-sm category-btn" ><i class="fa-regular fa-thumbs-up"></i></button>
 
-      <button class="btn btn-sm text-[#0E7A81] adopt-btn">Adopt</button>
+      <button id="adoptBtn-${pet.petId}"  class="btn btn-sm text-[#0E7A81] adopt-btn">Adopt</button>
 
-      <button class="btn btn-sm text-[#0E7A81] font-bold" onclick="loadDetails('${pet.petId}')">Details</button>
+      <button id="detailsBtn-${pet.petId}" class="btn btn-sm text-[#0E7A81] font-bold category-btn"  onclick="loadDetails('${pet.petId}')">Details</button>
     </div>
   </div>
             `;
 
-        petsContainer.append(card); 
-             
+        petsContainer.append(card);          
 });
-
 };
 
-const loadLike = async(petLike) => {
+const loadLike = (petLike) => {
       console.log(petLike);
-      const url =`https://openapi.programming-hero.com/api/peddy/pet/${petLike}`;
-      const res = await fetch(url);
-     const data = await res.json();
-     displayLike(data.petData);
+//       const url =`https://openapi.programming-hero.com/api/peddy/pet/${petLike}`;
+//       const res = await fetch(url);
+//      const data = await res.json();
+//      displayLike(data.petData);
+      fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petLike}`)
+      .then((res) => res.json())
+      .then((data) => {
+            removeActiveClass();
+
+            const activeLikeBtn = document.getElementById(`btn-${petLike}`)
+            activeLikeBtn.classList.add("active");
+
+
+            displayLike(data.petData)
+      })
+      .catch((err) => console.log(err));
 };
 const displayLike = (petData) =>{
       const likeContainer = document.getElementById('like-btn')
@@ -103,12 +115,19 @@ const displayLike = (petData) =>{
  
  
 } 
-const loadDetails = async(petId) => {
-      console.log(petId);
-     const url =`https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
-     const res = await fetch(url);
-     const data = await res.json();
-     displayDetails(data.petData);
+const loadDetails = (petId) => {
+      console.log(petId);     
+     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+      .then((res) => res.json())
+      .then((data) => {
+           removeActiveClass();
+
+            const activeBtn = document.getElementById(`detailsBtn-${petId}`);
+             
+           activeBtn.classList.add("active");
+            displayDetails(data.petData);
+      })
+      .catch((err) => console.log(err));
 }
 
 const displayDetails = (petData) => {
@@ -142,17 +161,28 @@ const removeActiveClass = () => {
       }
 };
 
+
 const categoryBtn = (id) => {
-     
+      const spinner = document.getElementById("spinner");
+       const petsContainer = document.getElementById('pets-container'); 
+
+       spinner.classList.remove("hidden");
+       petsContainer.classList.add("hidden")
+
       fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
       .then((res) => res.json())
       .then((result) => {
            removeActiveClass();
-
-            const activeBtn = document.getElementById(`btn-${id}`);
-             
+      
+           const activeBtn = document.getElementById(`btn-${id}`);
            activeBtn.classList.add("active");
-            displayPets2(result.data);
+
+        setTimeout(() => {
+           spinner.classList.add("hidden")
+           petsContainer.classList.remove("hidden")
+             displayPets2(result.data);
+        },2000)
+        
       })
       .catch((err) => console.log(err));
       
@@ -170,7 +200,7 @@ const displayCategories = (categories) => {
      
       button.innerHTML = `
       <div class="flex justify-center items-center gap-2">
-      
+       
       <button class="category-btn btn btn-xs sm:btn-sm md:btn-md lg:btn-lg px-3 md:px-10" id="btn-${item.category}" onclick="categoryBtn('${item.category}')"><img class="w-4 md:w-8" src=${item.category_icon}>${item.category}</button>
       
       `;
@@ -180,26 +210,6 @@ const displayCategories = (categories) => {
      });
 }
 
-
-
-
-
-
-// const loadAdopt = () => {
-//       document.getElementById('adopt-btn')
-//      let time = 3000;
-//      const countdown = setInterval(() => {
-//       const seconds = time % 60;
-
-//       document.getElementById('seconds').innerHTML = `
-      
-//       `
-//      },3000)
-//      if(time <= 0){
-//       clearInterval(countdown);
-//       document.getElementById("countdown").innerHTML = '';
-//      }
-// };
 
 
 loadCategories();
