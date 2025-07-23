@@ -15,12 +15,12 @@
      const loadCategories = () => {
 
      };
-     ```
+```
       
  2. let and const
 # new ways to declare variables
 ```examples:
      const a = 1;
-     ```
+```
 
 
